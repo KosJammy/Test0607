@@ -21,12 +21,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
+
         mylist();
     }
 
     private void mylist() {
         list = findViewById(R.id.list);
-        helper = new MyDBHelper(this,"my.db",null,1);
+        helper = MyDBHelper.getInstance(this);
         Cursor c = helper.getReadableDatabase()
                 .query("exp",null,null,null,null,null,null);
         SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,
